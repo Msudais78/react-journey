@@ -3,7 +3,8 @@ import Header from "./components/Header/header";
 import Hero from "./components/Hero/hero";
 import Body from "./components/Body/Body";
 import About from "./components/About/About";
-import { createBrowserRouter } from "react-router-dom";
+import OurJourney from "./components/OurJourney/OurJourney";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 
 
 function App() {
@@ -11,8 +12,7 @@ function App() {
     <div className="app">
       <Header />
       <main>
-        <Hero />
-        <Body />
+        <Outlet />
       </main>
     </div>
   );
@@ -21,13 +21,27 @@ function App() {
 export const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App />
-  }, 
-  {
-    path: "/about",
-    element: <About/>
-  },
-
-])
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: (
+          <>
+            <Hero />
+            <Body />
+          </>
+        )
+      },
+      {
+        path: "/about",
+        element: <About />
+      },
+      {
+        path: "/our-journey",
+        element: <OurJourney />
+      }
+    ]
+  }
+]);
 
 export default App;

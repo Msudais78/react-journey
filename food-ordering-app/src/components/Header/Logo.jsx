@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
     return (
-        <div className="flex items-center cursor-pointer">
-            <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-red-600 tracking-tight">
-                Swiggy
+        <Link to="/" className="flex items-center cursor-pointer select-none">
+            <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600 tracking-tight">
+                NamasteEats
             </h1>
-        </div>
+        </Link>
     );
 };
 
