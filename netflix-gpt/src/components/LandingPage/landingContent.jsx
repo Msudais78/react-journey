@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import MovieCard from "./movieCard";
+import MovieCard from "../common/MovieCard";
 import posterPaths from "../../utils/posterPaths";
 import FeatureCard from "./featureCard";
 import featuresData  from "../../utils/featuresData";

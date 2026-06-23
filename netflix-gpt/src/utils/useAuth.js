@@ -3,7 +3,7 @@ import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "./userSlice";
+import { addUser, removeUser } from "../store/slices/userSlice";
 
 
 const useAuth = () => {

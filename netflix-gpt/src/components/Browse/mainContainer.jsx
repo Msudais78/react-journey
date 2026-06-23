@@ -1,6 +1,6 @@
 import { API_OPTIONS } from "../../utils/constants";
 import { useEffect } from "react";
-import { addTrailerVideo } from "../../utils/moviesSlice";
+import { addTrailerVideo } from "../../store/slices/moviesSlice";
 import {useDispatch, useSelector} from "react-redux";
 
 const VideoTitle = ({original_title, overview})=>{

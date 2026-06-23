@@ -1,29 +1,18 @@
-import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import bgImage from "../../assets/reg-bg.png";
-import { handleRegistrationSubmit } from "../../utils/authHandler";
 import { NETFLIX_LOGO } from "../../utils/constants";
+import useRegistration from "./useRegistration";
 
 const RegistrationPage = () => {
-
-  const [isSignInMode, setisSignInMode] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  const toggleSignInMode = () => {
-    setisSignInMode(!isSignInMode);
-  }
-
-  const email = useRef(null);
-  const password = useRef(null);
-  const name = useRef(null);
-
-  const handleButtonClick = () => {handleRegistrationSubmit(
+  const {
     isSignInMode,
-    email.current.value,
-    password.current.value,
-    name.current?.value,
-    setErrorMessage
-  )};
+    errorMessage,
+    email,
+    password,
+    name,
+    toggleSignInMode,
+    handleButtonClick,
+  } = useRegistration();
 
   return (
     <div 

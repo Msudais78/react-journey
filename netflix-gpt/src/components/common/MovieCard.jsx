@@ -1,10 +1,11 @@
 import React from "react";
+import { IMG_URL, NETFLIX_LOGO } from "../../utils/constants";
 
-const MovieCard = ({ posterPath, rank, isFirst }) => {
+const MovieCard = ({ posterPath, rank, isFirst, showLogo = false }) => {
     // Provide a fallback poster if none is supplied
     const imageUrl = posterPath?.startsWith("http")
         ? posterPath
-        : `https://image.tmdb.org/t/p/w500${posterPath || "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"}`;
+        : posterPath ? (IMG_URL + posterPath) : "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg";
 
     return (
         <div
@@ -13,11 +14,12 @@ const MovieCard = ({ posterPath, rank, isFirst }) => {
             }`}
         >
             {/* Poster Layout */}
-            <div className="w-full h-full relative overflow-hidden rounded-md shadow-[0px_4px_15px_rgba(0,0,0,0.5)]">
+            <div className="w-full h-full relative overflow-hidden rounded-md shadow-[0px_4px_15px_rgba(0,0,0,0.5)] shadow-lg shadow-black/40">
                 <img
                     src={imageUrl}
                     alt="Movie Poster"
                     className="w-full h-full object-cover rounded-md group-hover:brightness-110 transition-all duration-300"
+                    loading="lazy"
                 />
 
                 {/* Subtle bottom gradient to make the white stroke pop nicely on light posters */}
@@ -25,6 +27,13 @@ const MovieCard = ({ posterPath, rank, isFirst }) => {
                     <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/50 to-transparent"></div>
                 )}
             </div>
+
+            {/* Netflix 'N' Logo Overlay */}
+            {showLogo && (
+                <div className="absolute top-2 left-2 w-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] z-10">
+                    <img src={NETFLIX_LOGO} alt="Netflix_logo" className='w-full h-full object-cover' />
+                </div>
+            )}
 
             {/* Huge Floating Ranked Number */}
             {rank && (
