@@ -9,7 +9,7 @@ const useBrowse = () => {
     useNowPlayingMovies();
     usePopularMovies();
     useTopRatedMovies();
-    useUpcomingMovies();
+    useUpcomingMovies();  
 
     const movies = useSelector(state => state.movies.nowPlayingMovies);
     const isGptSearchVisible = useSelector(showGptSearch);

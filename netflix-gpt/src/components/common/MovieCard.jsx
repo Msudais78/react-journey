@@ -1,11 +1,13 @@
 import React from "react";
 import { IMG_URL, NETFLIX_LOGO } from "../../utils/constants";
 
-const MovieCard = ({ posterPath, rank, isFirst, showLogo = false }) => {
+const MovieCard = ({ posterPath, rank, isFirst, showLogo = false, id }) => {
     // Provide a fallback poster if none is supplied
     const imageUrl = posterPath?.startsWith("http")
         ? posterPath
         : posterPath ? (IMG_URL + posterPath) : "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg";
+
+    if (!posterPath) return null;
 
     return (
         <div
