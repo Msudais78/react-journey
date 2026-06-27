@@ -1,22 +1,25 @@
 import React from "react";
 import { IMG_URL, NETFLIX_LOGO } from "../../utils/constants";
+import clickHandler from "./clickhandler";
+import { useDispatch }  from "react-redux";
 
-const MovieCard = ({ posterPath, rank, isFirst, showLogo = false, id }) => {
+const MovieCard = ({ posterPath, rank, isFirst, showLogo = false, id, mediaType }) => {
     // Provide a fallback poster if none is supplied
     const imageUrl = posterPath?.startsWith("http")
         ? posterPath
         : posterPath ? (IMG_URL + posterPath) : "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg";
 
+    const dispatch = useDispatch();
     if (!posterPath) return null;
-
     return (
         <div
             className={`relative shrink-0 w-[100px] sm:w-[120px] md:w-[140px] lg:w-[160px] aspect-2/3 rounded-md cursor-pointer group transition-all duration-300 hover:scale-105 hover:z-20 ${
                 rank && !isFirst ? "ml-8 sm:ml-12 md:ml-16" : ""
-            }`}
+            }`
+        }
+            onClick={() => clickHandler(id, dispatch, mediaType)}
         >
-            {/* Poster Layout */}
-            <div className="w-full h-full relative overflow-hidden rounded-md shadow-[0px_4px_15px_rgba(0,0,0,0.5)] shadow-lg shadow-black/40">
+            <div className="w-full h-full relative overflow-hidden rounded-md shadow-[0px_4px_15px_rgba(0,0,0,0.5)] shadow-black/40">
                 <img
                     src={imageUrl}
                     alt="Movie Poster"

@@ -6,6 +6,8 @@ const gptSearch = createSlice({
         showGptSearch: false,
         searchResultMovies: [],
         tmdbMovies: [],
+        isModalOpen: false,
+        trailerVideoDetails: null,
     },
     reducers: {
         toggleGptSearch: (state) => {
@@ -16,10 +18,18 @@ const gptSearch = createSlice({
         },
         addTmdbMovies: (state, action) => {
             state.tmdbMovies = action.payload;
+        },
+        openModal: (state, action)=>{
+            state.isModalOpen = true;
+            state.trailerVideoDetails = action.payload;
+        },
+        closeModal: (state)=>{
+            state.isModalOpen = false;
+            state.trailerVideoDetails = null;
         }
     }
 });
 
-export const { toggleGptSearch, addSearchResultMovies, addTmdbMovies } = gptSearch.actions;
+export const { toggleGptSearch, addSearchResultMovies, addTmdbMovies, openModal, closeModal } = gptSearch.actions;
 export default gptSearch.reducer;
 export const showGptSearch = (state) => state.gptSearch.showGptSearch;

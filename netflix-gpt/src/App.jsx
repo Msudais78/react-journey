@@ -4,7 +4,10 @@ import RegistrationPage from "./components/RegestrationPage/resgistrationPage";
 import Browse from "./components/Browse/browse";
 import useAuth from "./utils/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute/protectedRouter";
-function App() {
+import TvShows from "./components/TvShows/tvShows";
+import NewPopular from "./components/NewPopular/newPopular";
+import Movies from "./components/Movies/movies";
+function App() {    
 
  useAuth();
   return (
@@ -32,9 +35,21 @@ export const appRouter = createBrowserRouter([
                 path: "/browse",
                 element: <ProtectedRoute><Browse /></ProtectedRoute>,
             },
+            {
+                path: '/movies',
+                element: <Movies />
+            },
+            {
+                path: "/tvshows",
+                element: <TvShows />
+            },
+            {
+                path: "/newpopular",
+                element: <NewPopular />
+            }
         ]
     },
   
 ])
-
+        
 export default App;

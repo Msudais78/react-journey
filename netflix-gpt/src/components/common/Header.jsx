@@ -37,12 +37,12 @@ const Header = () => {
                 </Link>
                 <div className="hidden md:block">
                     <ul className="flex items-center gap-5 text-sm font-medium text-gray-200">
-                        <li className="text-white font-semibold cursor-pointer">Home</li>
-                        <li className="cursor-pointer hover:text-gray-400 transition-colors">TV Shows</li>
-                        <li className="cursor-pointer hover:text-gray-400 transition-colors">Movies</li>
-                        <li className="cursor-pointer hover:text-gray-400 transition-colors">New & Popular</li>
-                        <li className="cursor-pointer hover:text-gray-400 transition-colors">My List</li>
-                        <li className="cursor-pointer hover:text-gray-400 transition-colors">Browse by Languages</li>
+                        <Link to={'/browse'}><li className="text-white font-semibold cursor-pointer">Home</li></Link>
+                        <Link to={'/tvshows'}><li className="cursor-pointer hover:text-gray-400 transition-colors">TV Shows</li></Link>
+                        <Link to={'/movies'}><li className="cursor-pointer hover:text-gray-400 transition-colors">Movies</li></Link>
+                        <Link to={'/newpopular'}><li className="cursor-pointer hover:text-gray-400 transition-colors">New & Popular</li></Link>
+                        <Link to={'/mylist'}><li className="cursor-pointer hover:text-gray-400 transition-colors">My List</li></Link>
+                        <Link to={'/languages'}><li className="cursor-pointer hover:text-gray-400 transition-colors">Browse by Languages</li></Link>
                     </ul>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import MainContainer  from "./mainContainer";
 import SecondryContainer from "./secondryContainer";
 import GptSearch from "../GptSearch/gptSearch";
 import useBrowse from "./useBrowse";
+import MovieModel from "../MovieModel/movieModel";
 
 const Browse = () => {
     const { movies, isGptSearchVisible } = useBrowse();
@@ -25,6 +26,7 @@ const Browse = () => {
                 <SecondryContainer />
                 </>
             )}
+            <MovieModel />
         </div>
     );
 };
