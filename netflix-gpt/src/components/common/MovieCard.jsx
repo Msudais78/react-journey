@@ -1,14 +1,12 @@
 import React from "react";
 import { IMG_URL, NETFLIX_LOGO } from "../../utils/constants";
 import clickHandler from "./clickhandler";
-import { useDispatch }  from "react-redux";
+import { useDispatch } from "react-redux";
 
 const MovieCard = ({ posterPath, rank, isFirst, showLogo = false, id, mediaType }) => {
-    // Provide a fallback poster if none is supplied
     const imageUrl = posterPath?.startsWith("http")
         ? posterPath
         : posterPath ? (IMG_URL + posterPath) : "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg";
-
     const dispatch = useDispatch();
     if (!posterPath) return null;
     return (

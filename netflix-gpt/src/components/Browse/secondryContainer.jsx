@@ -2,7 +2,8 @@ import MovieList from "./movieList";
 import { useSelector } from "react-redux";
 
 const SecondryContainer = () => {
-    const { nowPlayingMovies, popularMovies, topRatedMovies, upcomingMovies } = useSelector(store => store.movies);
+
+    const { nowPlayingMovies, popularMovies, topRatedMovies, upcomingMovies } = useSelector(store => store.movies.mainPage);
 
     if (!nowPlayingMovies || !popularMovies || !topRatedMovies || !upcomingMovies) return null;
 

@@ -7,11 +7,13 @@ import ProtectedRoute from "./components/ProtectedRoute/protectedRouter";
 import TvShows from "./components/TvShows/tvShows";
 import NewPopular from "./components/NewPopular/newPopular";
 import Movies from "./components/Movies/movies";
+import Header from "./components/common/Header";
 function App() {    
 
  useAuth();
   return (
     <>
+    <Header />
      <Outlet />
     </>
   )

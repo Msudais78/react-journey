@@ -1,6 +1,6 @@
 import { API_OPTIONS } from "../../utils/constants";
 import { useEffect } from "react";
-import { addTrailerVideo } from "../../store/slices/moviesSlice";
+import { addMediaReducer } from "../../store/slices/moviesSlice";
 import {useDispatch, useSelector} from "react-redux";
 
 const VideoTitle = ({original_title, overview})=>{
@@ -23,6 +23,7 @@ const VideoTitle = ({original_title, overview})=>{
 
 const VideoBackground = ({id})=>{
     const dispatch = useDispatch();
+    const trailerVideo = useSelector(state => state.movies.ui.trailerVideo);
 
     useEffect(()=>{
         const fetchMoviesVideo = async()=>{
@@ -31,7 +32,7 @@ const VideoBackground = ({id})=>{
                 const json = await data.json();
                 const result = json.results.filter((video)=>video.type === "Trailer");
                 const trailer = result.length ? result[0] : json.results[0];
-                dispatch(addTrailerVideo(trailer));
+                dispatch(addMediaReducer({domain: "ui", category: "trailerVideo", data: trailer}));
             } catch (error){
                 console.log(error);
             }
@@ -39,7 +40,6 @@ const VideoBackground = ({id})=>{
         fetchMoviesVideo();
     }, [id, dispatch]);
     
-    const trailerVideo = useSelector((store) => store.movies.trailerVideo);
     
     if (!trailerVideo) return <h1>Loading</h1>;
     

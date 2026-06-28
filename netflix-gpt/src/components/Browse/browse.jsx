@@ -6,11 +6,11 @@ import useBrowse from "./useBrowse";
 import MovieModel from "../MovieModel/movieModel";
 
 const Browse = () => {
-    const { movies, isGptSearchVisible } = useBrowse();
+    const { nowPlayingMovies, popularMovies, topRatedMovies, upcomingMovies, isGptSearchVisible } = useBrowse();
 
-    if (!movies || movies.length === 0) return <h1>Loading</h1>;
+    if (!nowPlayingMovies || !popularMovies || !topRatedMovies || !upcomingMovies) return <h1>Loading</h1>;
 
-    const mainMovie = movies[7];
+    const mainMovie = nowPlayingMovies[7];
     const {original_title, overview, id} = mainMovie;
 
     return (

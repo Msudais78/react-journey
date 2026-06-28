@@ -6,7 +6,7 @@ const GptMovieSuggestions = () => {
     const tmdbMovies = useSelector((state) => state.gptSearch.tmdbMovies);
 
     // If there is no data, don't render anything
-    if (!searchResultMovies || !tmdbMovies) return null;
+    if (!searchResultMovies || searchResultMovies.length === 0 || !tmdbMovies) return null;
 
     return (
         // Added flex-col and gap-10 to space out the rows, and glassmorphism for a modern look

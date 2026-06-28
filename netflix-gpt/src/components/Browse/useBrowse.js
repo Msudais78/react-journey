@@ -1,21 +1,21 @@
 import { useSelector } from "react-redux";
-import useNowPlayingMovies from "../../hooks/useNowPlayingMovies";
-import usePopularMovies from "../../hooks/usePopularMovies";
-import useTopRatedMovies from "../../hooks/useTopRatedMovies";
-import useUpcomingMovies from "../../hooks/useUpcomingMovies";
+import useFetchCategory from "../../hooks/useFetchCategory";
 import { showGptSearch } from "../../store/slices/gptSlice";
 
 const useBrowse = () => {
-    useNowPlayingMovies();
-    usePopularMovies();
-    useTopRatedMovies();
-    useUpcomingMovies();  
+    useFetchCategory("/discover/movie?with_genres=16&with_original_language=ja", "mainPage", "nowPlayingMovies");
+    useFetchCategory("/movie/popular", "mainPage", "popularMovies");
+    useFetchCategory("/movie/top_rated", "mainPage", "topRatedMovies");
+    useFetchCategory("/movie/upcoming", "mainPage", "upcomingMovies");
 
-    const movies = useSelector(state => state.movies.nowPlayingMovies);
     const isGptSearchVisible = useSelector(showGptSearch);
+    const { nowPlayingMovies, popularMovies, topRatedMovies, upcomingMovies } = useSelector(state => state.movies.mainPage);
 
     return {
-        movies,
+        nowPlayingMovies,
+        popularMovies,
+        topRatedMovies,
+        upcomingMovies,
         isGptSearchVisible,
     };
 };

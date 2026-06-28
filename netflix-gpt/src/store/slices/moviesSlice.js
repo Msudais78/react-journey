@@ -3,34 +3,51 @@ import { createSlice } from "@reduxjs/toolkit";
 const moviesSlice = createSlice({
     name: 'movies',
     initialState: {
-        nowPlayingMovies: null,
-        trailerVideo: null,
-        topRatedMovies: null,
-        upcomingMovies: null,
-        popularMovies: null,
-        popularTvShows: null,
+
+        tv: {
+            popularTvShows: null,
+            popularTv: null,
+            trendingTv: null,
+            topRatedTv: null,
+            airingTodayTv: null,
+            actionTv: null,
+            sciFiTv: null,
+        },
+        mainPage: {
+            nowPlayingMovies: null,
+            topRatedMovies: null,
+            upcomingMovies: null,
+            popularMovies: null,
+        },
+        ui: {
+            trailerVideo: null,
+        },
+        movies: {
+            trendingThisWeek: null,
+            nowPlaying: null,
+            topRated: null,
+            upcomingReleases: null,
+            actionMovies: null,
+            blockbusterMovies: null,
+        },
+        mixed: {
+            trendingToday: null,
+            trendingWeek: null,
+            kDramas: null,
+            japaneseDramas: null,
+            chineseDramas: null,
+
+        }
+        
     },
     reducers: {
-        addPopularTvShows: (state, action) => {
-            state.popularTvShows = action.payload;
-        },
-        addNowPlayingMovies: (state, action) => {
-            state.nowPlayingMovies = action.payload;
-        },
-        addTrailerVideo: (state, action) => {
-            state.trailerVideo = action.payload;
-        },
-        addTopRatedMovies: (state, action) => {
-            state.topRatedMovies = action.payload;
-        },
-        addUpcomingMovies: (state, action) => {
-            state.upcomingMovies = action.payload;
-        },
-        addPopularMovies: (state, action) => {
-            state.popularMovies = action.payload;
+        addMediaReducer: (state, action) => {
+            const {domain, category, data} = action.payload;
+            state[domain][category] = data;
         }
     }
 });
 
-export const { addNowPlayingMovies, addTrailerVideo, addTopRatedMovies, addUpcomingMovies, addPopularMovies, addPopularTvShows } = moviesSlice.actions;
+export const { addMediaReducer } = moviesSlice.actions;
+
 export default moviesSlice.reducer;
